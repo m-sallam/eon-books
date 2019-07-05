@@ -7,7 +7,8 @@ middlewareObj.isLoggedIn = function (req, res, next) {
   res.redirect('/login')
 }
 
-middlewareObj.checkRegister = async function ({ body: { email, password, fullname, country, terms, repeatPassword }, flash }, res, next) {
+middlewareObj.checkRegister = async function (req, res, next) {
+  const { body: { email, password, fullname, country, terms, repeatPassword } } = req
   async function getMessage () {
     if (!email) return { status: 'error', message: 'Email is required' }
     if (!password) return { status: 'error', message: 'Password is required' }
@@ -19,24 +20,30 @@ middlewareObj.checkRegister = async function ({ body: { email, password, fullnam
     return { status: 'success', message: 'Registration Completed Successfully' }
   }
 
-  const { status, message } = await getMessage()
-  flash(status, message)
-
-  return (status === 'error') ? res.redirect('/register') : next()
+  try {
+    const { status, message } = await getMessage()
+    req.flash(status, message)
+    console.log(status, message)
+    return (status === 'error') ? res.redirect('/register') : next()
+  } catch (err) {
+    console.log(err)
+    res.redirect('/register')
+  }
 }
 
-middlewareObj.checkProfile = async function ({ body: { email, password, fullname, country, terms, repeatPassword }, flash, user }, res, next) {
+middlewareObj.checkProfile = async function (req, res, next) {
+  const { body: { email, password, fullname, country, repeatPassword } } = req
   async function getMessage () {
     if (!email) return { status: 'error', message: 'Email is required' }
     if (!fullname) return { status: 'error', message: 'Full Name is required' }
     if (!country) return { status: 'error', message: 'Country is required' }
     if (password !== repeatPassword) return { status: 'error', message: 'Password does not match' }
-    if (await emailExists(email, user.email)) return { status: 'error', message: 'Email Already Exists' }
+    if (await emailExists(email, req.user.email)) return { status: 'error', message: 'Email Already Exists' }
     return { status: 'success', message: 'Changes Saved' }
   }
 
   const { status, message } = await getMessage()
-  flash(status, message)
+  req.flash(status, message)
 
   return (status === 'error') ? res.redirect('/user/edit') : next()
 }

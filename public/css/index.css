@@ -79,10 +79,6 @@ html * {
   font-weight: 400;
 }
 
-.container {
-  min-height: 70vh;
-}
-
 
 #registerForm {
   background-color: #FFF;
