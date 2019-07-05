@@ -1,0 +1,33 @@
+<div class="topBar">
+      <div class="ui grid">
+        <div class="sixteen wide mobile five wide tablet five wide computer column">
+          <div class="logoContainer">
+            <a href="/"><img class="logo" src="/img/logo.png" alt=""></a>
+          </div>
+        </div>
+        <div class="four wide mobile three wide tablet three wide computer column ">
+          <div class="ui menuList horizontal list">
+            <a class="item" href="/books">Books</a>
+          </div>
+        </div>
+        <div class="twelve wide mobile eight wide tablet eight wide computer column right aligned">
+          <div class="ui menuList horizontal list">
+          <% if(currentUser) {%>
+            <a class="item" href="/requests">Requests
+            <% if(requestsCount) { %>
+              <% if(requestsCount !== 0) { %>
+                <span class="ui mini red circular center floated label"><%= requestsCount %></span>
+              <% } %>
+            <% } %>
+            </a>
+            <a class="item" href="/user/<%= currentUser.username %>/books">My Books</a>
+            <a class="item" href="/user/edit">Profile</a>
+            <a class="item" href="/logout">Logout</a>
+          <% } else {%> 
+            <a class="item" href="/register">Register</a>
+            <a class="item" href="/login">Login</a>
+          <%}%>    
+          </div>
+        </div>
+      </div>
+    </div>

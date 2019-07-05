@@ -1,0 +1,79 @@
+<% include ./partials/header.ejs %>       
+<% include ./partials/topbar.ejs %>
+<% include ./partials/flash.ejs %>
+
+<div class="ui two item secondary pointing menu">
+  <a href="/requests/sent" class="active item">Sent</a>
+  <a href="/requests/recieved" class="item">Recieved</a>
+</div>
+
+<div class="ui middle aligned divided list">
+<% for(var request of requests){ %> 
+<%if (request.status !== 'completed') { %> 
+<% if(request.senderSeen){ %>
+  <div id="<%= request._id %>" class="item" style="padding:10px;">
+ <% } else { %> 
+  <div id="<%= request._id %>" class="item" style="background-color:white; padding:10px;">
+ <% } %> 
+ <% if(request.status === 'initial') { %>
+  <div class="right floated content">
+      <div class="ui red button cancelRequest">Cancel</div>
+    </div>
+<% } else if (request.status === 'countered') { %> 
+  <div class="right floated content">
+    <div class="ui red button cancelRequest">Cancel</div>
+  </div>
+  <div class="right floated content">
+    <div class="ui green button acceptRequest">Accept</div>
+  </div>
+<% } else if (request.status === 'pending') { %> 
+  <div class="right floated content">
+    <h4><%= request.reciever.email %></h4>
+  </div>
+  <div class="right floated content">
+    <div class="ui green button completeRequest">Mark as Complete</div>
+  </div>
+  <div class="right floated content">
+    <div class="ui red button cancelRequest">Cancel</div>
+  </div>
+<% } %>
+
+    <span class="content" style="font-weight:bold;">
+      Your &nbsp;
+    </span>
+  <% if(request.status === 'initial') { %>
+  ....
+  <% } else { %>
+    <img class="ui avatar image" src="<%= request.senderBook.thumbnail %>">
+    <div class="content">
+      <a id="<%= request.senderBook._id %>" class="bookCard"><h5><%= request.senderBook.title %></h5></a>
+    </div>
+  <% } %>
+    
+    <span class="content" style="font-weight:bold;">
+      &nbsp;&nbsp; For <span><%= request.reciever.username %>'s</span> &nbsp;&nbsp;
+    </span>
+
+    <img class="ui avatar image" src="<%= request.recieverBook.thumbnail %>">
+    <div class="content">
+      <a id="<%= request.recieverBook._id %>" class="bookCard"><h5><%= request.recieverBook.title %></h5></a>
+    </div>
+  </div>
+<% } %>
+<% } %>
+</div>
+
+
+
+<div class="ui large modal" >
+  <div class="header" style="margin:0 auto;">
+    <span class="bookNameSpan"></span>
+    <div style="float:right"><i class="ui close grey icon link closeModal"></i></div>
+  </div>
+  <div id="bookInfoSegment" class="ui image content segment" style="min-height:500px !important;margin:0 !important;">
+    
+  </div>
+</div>
+
+
+<% include ./partials/footer.ejs %>

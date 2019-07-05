@@ -1,0 +1,26 @@
+<% include ./partials/header.ejs %>
+
+
+    <% include ./partials/topbar.ejs %>
+    <% include ./partials/flash.ejs %>
+    <div class="ui text container">
+    
+      <form id="loginForm" class="ui form" method="POST">
+        <h1>Login</h1>
+        <br>
+        <div class="field">
+          <label>Username</label>
+          <input class="" type="text" name="username" placeholder="Username">
+        </div> 
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+        <button class="ui fluid button" type="submit">Submit</button>
+      </form>
+
+
+    </div>
+
+
+<% include ./partials/footer.ejs %>

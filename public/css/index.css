@@ -1,0 +1,122 @@
+body,
+html {
+  background-color: #F1F2F4;
+}
+
+body {
+  padding-top: 30px;
+  padding-bottom: 0px;
+}
+
+html * {
+  font-family: 'Cairo', sans-serif;
+}
+
+.page {
+  min-height: 63.5vh;
+}
+
+.topBar>.ui.grid,
+.topBar>.ui.grid>.column {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.logoContainer {
+  position: relative;
+  height: 100%;
+}
+
+.logo {
+  max-width: 100%;
+  position: relative;
+  margin-left: 30px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.topBar {
+  margin-bottom: 30px;
+  min-height: 100px;
+  background-color: white;
+}
+
+.menuList>.item {
+  margin: 0px !important;
+  color: #000 !important;
+  text-align: center;
+  line-height: 100px !important;
+  height: 100px;
+  min-width: 85px;
+  font-size: 16px !important;
+}
+
+.menuList>.item:hover {
+  background-color: #583E88;
+  color: #FFF !important;
+}
+
+.head {
+  text-align: center;
+  margin: 30px auto 60px auto;
+  background-color: #FFF;
+  padding: 30px;
+}
+
+.head>a {
+  color: #583E88;
+  font-weight: 400;
+  margin-right: 0px !important;
+}
+
+.head>h1 {
+  font-weight: 700;
+  font-size: 38px;
+  right: 0px !important;
+}
+
+.head>h3 {
+  font-weight: 400;
+}
+
+.container {
+  min-height: 70vh;
+}
+
+
+#registerForm {
+  background-color: #FFF;
+  padding: 30px;
+}
+
+#loginForm {
+  background-color: #FFF;
+  padding: 30px;
+}
+
+#addNewBook {
+  width: 160px;
+  height: 40px !important;
+  background-color: #FFF;
+  margin-bottom: 20px;
+}
+
+#addNewBookGrid {
+  min-height: 400px !important;
+  background-color: #F1F2F4;
+}
+
+.footer {
+  background-color: #FFF;
+  height: 54px;
+  margin-top: 30px;
+  padding: 14px;
+}
+
+.footer>.list>a {
+  color: #000 !important;
+}
+
+.footer>.list>a:hover {
+  color: #583E88 !important;
+}

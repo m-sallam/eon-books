@@ -1,0 +1,74 @@
+<% include ./partials/header.ejs %>
+
+
+  <% include ./partials/topbar.ejs %>
+    <% include ./partials/flash.ejs %>
+    <% if(currentUser){ %>
+      <div class="ui modal addBookModal">
+        <div class="header">Add a New Book
+          <div style="float:right"><i class="ui close grey icon link closeModal"></i></div>
+        </div>
+        <div class="content">
+          <div id="addNewBookSegment" class="ui vertical segment">
+            <form id="addNewBookForm" method="POST">
+              <div class="ui transparent fluid big icon input">
+                <input id="bookNameInput" type="text" placeholder="Book Name">
+              </div>
+            </form>
+            <br>
+            <br>
+            <div id="addNewBookGrid" class="ui centered grid">
+
+            </div>
+
+          </div>
+        </div>
+        </div>
+        <% } %>
+        <h1><%= username %>'s Books</h1>
+        <br>
+        <br>
+
+        <% if(currentUser){ %>
+          <a id="addNewBook" class="ui large button" style="">Add New Book</a>
+         <% } %>
+        
+        <div class="ui grid booksGrid">
+
+          <% for(var volume of volumes) { %> 
+            <div class="sixteen wide mobile eight wide tablet four wide computer column">
+              <div id="<%= volume._id %>" class="card bookCard">
+                <div class="image">
+                  <img class="thumbnail" src="<%= volume.thumbnail %>">
+                </div>
+                <h5><%= volume.title %></h5>
+            </div>
+          </div>
+          
+          <% } %> 
+        </div>
+
+<div class="ui large modal bookInfoModal" >
+  <div class="header">
+    <span class="bookNameSpan"></span>
+    <div style="float:right"><i class="ui close grey icon link closeModal"></i></div>
+  </div>
+  <div id="bookInfoSegment" class="ui image content segment" style="min-height:500px !important;margin:0 !important;">
+    
+  </div>
+  <% if(currentUser) { %>
+  <div class="actions">
+    <div class="ui button requestTrade">Request Trade</div>
+    <div class="ui red button deleteBook"><i class="ui close icon"></i> Delete</div>
+  </div>
+  <% } else { %>
+  <div class="actions">
+    <a href="/login" class="ui button">Login to request this book!</a>
+  </div>
+  <% } %>
+</div>
+
+
+
+
+        <% include ./partials/footer.ejs %>

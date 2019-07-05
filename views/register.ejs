@@ -1,0 +1,46 @@
+<% include ./partials/header.ejs %>
+
+  
+    <% include ./partials/topbar.ejs %>
+    <% include ./partials/flash.ejs %>
+    
+    <form id="registerForm" class="ui form" method="POST">
+      <h1>Registering for Book Trade..... Are You Sure?!!</h1>
+      <br>
+      <div class="required field">
+        <label>Username</label>
+        <input class="" type="text" name="username" placeholder="Username">
+      </div>
+      <div class="required field">
+        <label>Full Name</label>
+        <input type="text" name="fullname" placeholder="Full Name">
+      </div>
+      <div class="required field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email">
+      </div>
+      <div class="required field">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password">
+      </div>
+      <div class="required field">
+        <label>Repeat Password</label>
+        <input type="password" name="repeatpassword" placeholder="Repeat Password">
+      </div>
+      <div class="required field">
+        <label>Country</label>
+        <input type="text" name="country" placeholder="Country">
+      </div>
+      <div class="required field">
+        <div class="ui checkbox">
+          <input type="checkbox" name="terms" class="hidden">
+          <label>I agree to the Terms and Conditions, Nope Not gonna show it to you.</label>
+        </div>
+      </div>
+      <button class="ui fluid button" type="submit">Submit</button>
+    </form>
+
+
+
+
+<% include ./partials/footer.ejs %>

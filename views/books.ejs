@@ -1,0 +1,157 @@
+<% include ./partials/header.ejs %>
+
+
+
+
+    <% include ./partials/topbar.ejs %>
+    <% include ./partials/flash.ejs %>
+ 
+  
+
+    <div class="ui computer reversed tablet reversed grid">
+      <div class="sixteen wide mobile four wide tablet four wide computer column sideBar">
+        <form method="GET">
+          <div class="searchBar">
+            <div class="ui transparent big fluid icon input">
+              <input type="text" placeholder="Search" name="search">
+              <i class="search icon"></i>
+            </div>
+          </div>
+          <br>
+          <div class="ui accordion">
+            <div class="title">
+              <i class="dropdown icon"></i> Sort by
+            </div>
+            <div class="content">
+              <div class="grouped fields">
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="sort" checked=true tabindex="0" value="Newest" class="hidden">
+                    <label>Newest</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="sort" tabindex="0" value="Oldest" class="hidden">
+                    <label>Oldest</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="sort" tabindex="0" value="Hrating" class="hidden">
+                    <label>Hieghest Rated</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui radio checkbox">
+                    <input type="radio" name="sort" tabindex="0" value="Lrating" class="hidden">
+                    <label>Lowest Rated</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="title">
+              <i class="dropdown icon"></i> Genre
+            </div>
+            <div class="content">
+              <div class="grouped fields">
+              <% for (var genre of genres) { %> 
+              <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="genre" value="<%= genre %>" tabindex="0" class="hidden">
+                    <label><%= genre %></label>
+                  </div>
+                </div>
+              <% } %>             
+              </div>
+            </div>
+
+            <div class="title">
+              <i class="dropdown icon"></i> Language
+            </div>
+            <div class="content">
+              <div class="grouped fields">
+              <% for (var language of languages) { %> 
+              <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="language" value="<%= language %>" tabindex="0" class="hidden">
+                    <label><%= language %></label>
+                  </div>
+                </div>
+              <% } %>
+                
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="ui fluid buttons">
+            <button class="ui purple button">APPLY</button>
+            <div class="or"></div>
+            <a href="/books" class="ui button">RESET</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="sixteen wide mobile twelve wide tablet twelve wide computer column booksGrid">
+        <div class="ui centered grid">
+          <% for(var volume of volumes) { %> 
+            <div class="sixteen wide mobile eight wide tablet five wide computer column">
+              <div id="<%= volume._id %>" class="card bookCard">
+                <div class="image">
+                  <img class="thumbnail" src="<%= volume.thumbnail %>">
+                </div>
+                <h5><%= (volume.title.length > 30) ? volume.title.slice(0,30) + '..' : volume.title %></h5>
+                
+            </div>
+          </div>
+          
+          <% } %>
+          
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="ui borderless secondary menu centered grid" style="background-color: white;margin:auto 100px;">
+      
+      <% if(currentPage === 1) { %> 
+        <a class="item disabled">First</a>
+        <a class="item disabled">Previous</a>
+      <% } else { %>
+        <a href="/books/1" class="item">First</a>
+        <a href="/books/<%= currentPage - 1 %>" class="item">Previous</a>
+      <% } %>
+      <% if(currentPage === lastPage) { %> 
+        <a class="item disabled">Next</a>
+        <a class="item disabled">Last</a>
+      <% } else { %>
+        <a href="/books/<%= currentPage + 1 %>" class="item">Next</a>
+        <a href="/books/<%= lastPage %>" class="item">Last</a>
+      <% } %>
+      
+      
+     
+    </div>
+
+   
+
+<div class="ui large modal" >
+  <div class="header">
+    <span class="bookNameSpan"></span>
+    <div style="float:right"><i class="ui close grey icon link closeModal"></i></div>
+  </div>
+  <div id="bookInfoSegment" class="ui image content segment" style="min-height:500px !important;margin:0 !important;">
+    
+  </div>
+  <% if(currentUser) { %>
+  <div class="actions">
+    <div class="ui button requestTrade">Request Trade</div>
+  </div>
+  <% } else { %>
+  <div class="actions">
+    <a href="/login" class="ui button">Login to request this book!</a>
+  </div>
+  <% } %>
+</div>
+
+<% include ./partials/footer.ejs %>
+  

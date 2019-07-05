@@ -1,0 +1,54 @@
+<% include ./partials/header.ejs %>
+
+       
+        <% include ./partials/topbar.ejs %>
+        <% include ./partials/flash.ejs %>
+
+        <div class="head">
+            <h1>Trade Books With People All Over The World</h1>
+            <h3>THE SMALLEST, MOST USELESS BOOK TRADING SITE</h3>
+            <h4>Nearly <%= count %> Books on The Site, WOW.... Such Numbers!!</h4>
+            <br>
+            <a href="/books">
+                <h3>Browse Books Now!</h3>
+            </a>
+        </div>
+        
+
+        <h4>NEW SUBMITTED BOOKS</h4>
+        <div class="ui grid">
+           <% for(var volume of volumes) { %> 
+            <div class="sixteen wide mobile eight wide tablet four wide computer column">
+              <div id="<%= volume._id %>" class="card bookCard">
+                <div class="image">
+                  <img class="thumbnail" src="<%= volume.thumbnail %>">
+                </div>
+                <h5><%= volume.title %></h5>
+            </div>
+          </div>
+          
+          <% } %> 
+            
+        </div>
+
+
+<div class="ui large modal" >
+  <div class="header">
+    <span class="bookNameSpan"></span>
+    <div style="float:right"><i class="ui close grey icon link closeModal"></i></div>
+  </div>
+  <div id="bookInfoSegment" class="ui image content segment" style="min-height:500px !important;margin:0 !important;">
+    
+  </div>
+  <% if(currentUser) { %>
+  <div class="actions">
+    <div class="ui button requestTrade">Request Trade</div>
+  </div>
+  <% } else { %>
+  <div class="actions">
+    <a href="/login" class="ui button">Login to request this book!</a>
+  </div>
+  <% } %>
+</div>
+
+<% include ./partials/footer.ejs %>

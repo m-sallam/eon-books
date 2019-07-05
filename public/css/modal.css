@@ -1,0 +1,8 @@
+.modal>.content>.description>.grid>.row>.column>.key {
+  font-weight: 700 !important;
+}
+
+.modal>.content>.description>.grid>.row>.column>.owner {
+  font-size: 18px;
+  font-weight: 700 !important;
+}

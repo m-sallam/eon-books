@@ -1,0 +1,72 @@
+
+      <img class="image" src="<%= volume.thumbnail %>">
+    <div class="description">
+      <div class="ui divided grid">
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Owner:</p>
+          </div>
+          <div class="twelve wide column">
+            <a class="owner" href="/user/<%= volume.user.username %>/books"><%= volume.user.username %></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Autor:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.author %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Average Rating:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.averageRating %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Genres:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.genre.join(', ') %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Description:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.description %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Langauge:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.language %></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="four wide column">
+            <p class="key">Publish Date:</p>
+          </div>
+          <div class="twelve wide column">
+            <p><%= volume.publishedDate %></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+ 

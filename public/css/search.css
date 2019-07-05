@@ -1,0 +1,13 @@
+.searchBar {
+  background-color: #FFF;
+  height: 40px;
+  padding: 10px 10px;
+}
+
+.sideBar>form>h3 {
+  font-weight: 300 !important;
+}
+
+.checkbox {
+  padding: 5px !important;
+}

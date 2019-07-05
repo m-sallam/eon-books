@@ -1,0 +1,13 @@
+ <% if(error && error.length > 0){ %>
+        <div class="ui container">
+            <div class="ui negative floating message">
+                <%= error %>
+            </div>
+        </div>
+        <br>
+    <% } else if(success && success.length > 0) { %>
+        <div class="ui container">
+            <div class="ui success floating message"><%= success %></div>
+        </div>
+        <br>
+    <% } %>
